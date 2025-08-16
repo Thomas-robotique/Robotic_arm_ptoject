@@ -21,6 +21,17 @@ Il combine mécanique, électronique et, dans les futures étapes, intelligence 
 
 ---
 
+## Situation actuelle
+En prenant z positif vers le haut et x positif vers nous,
+le bras est composé de 2 rotations : une dans le plan xy et une dans le plan xz et yz.
+Vous trouverez une vidéo de démonstration du bras dans le dossier hardware/image.
+La carte électrique permet l'alimentation des deux servomoteurs concernés par les 2 rotations, ainsi que le contrôle des servos par la carte Arduino.
+
+Voici une photo de la première version du cêblage
+
+<img width="2048" height="1536" alt="Photo du montage du robot" src="https://github.com/user-attachments/assets/24ab0a1a-ad08-4802-b9cd-7b51c7644dc0" />
+
+
 
 
 
