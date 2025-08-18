@@ -9,7 +9,7 @@ Dans ce document, vous trouverez un ensemble de vidéos présentées dans l’or
 
 #### -18/08/2025  9h23, Suivi du développement, Bras robotique
 
-   Correction du code de pilotage des servomoteurs pour reduir le jeu mécanique.
+   Correction du code de pilotage des servomoteurs pour reduir le jeu mécanique. Robotic-arm-project/sofware
    
    Fixation du bras sur une planche en bois afin de réduire le jeu mécanique.
    
