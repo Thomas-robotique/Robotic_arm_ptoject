@@ -11,6 +11,7 @@ Dans ce document, vous trouverez un ensemble de vidéos présentées dans l’or
 
    Correction du code de pilotage des servomoteurs pour reduir le jeu mécanique. [Voir le code Arduino](software/arduino/Code_arduino.md)
 
+
    
    Fixation du bras sur une planche en bois afin de réduire le jeu mécanique.
    
