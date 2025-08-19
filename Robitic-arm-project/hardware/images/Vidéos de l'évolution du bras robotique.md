@@ -20,12 +20,23 @@ Dans ce document, vous trouverez un ensemble de vidéos présentées dans l’or
    
    Ajout d’une nouvelle articulation destinée soutenir la pince.
    
-  (https://youtu.be/2np7a8PfgLk)
+ 2e vidéo du brad robotique: (https://youtu.be/2np7a8PfgLk)
 #### Futur points d'amélioration :
    Je dois encore améliorer le jeu mécanique et fixer la pince.    
 
    ---
 
+   #### -19/08/2025 13:20, Suivi du développement, Bras robotique
+Modification de la fixation du servomoteur situé au sommet du bras robotique, afin de réduire le jeu mécanique et d’améliorer l’angle de rotation.
 
+ 3ᵉ vidéo du bras robotique : https://youtu.be/VHtMNOzQYFw
+
+#### Points d’amélioration futurs
+
+Optimiser davantage la partie mécanique pour obtenir un bras robotique le plus stable possible.
+
+Finaliser la fixation de la pince.
+
+---
 
 
