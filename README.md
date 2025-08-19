@@ -29,7 +29,7 @@ La carte électrique permet l'alimentation des deux servomoteurs concernés par 
 
 Voici une photo de la première version du cêblage
 
-<img width="2048" height="1536" alt="Photo du montage du robot" src="https://github.com/user-attachments/assets/24ab0a1a-ad08-4802-b9cd-7b51c7644dc0" />
+<img width="2048" height="1536" alt="Photo du montage du bras robotique" src="https://github.com/user-attachments/assets/a13fcfdc-6194-4018-b971-6d5550d6d26e" />
 
 
 
