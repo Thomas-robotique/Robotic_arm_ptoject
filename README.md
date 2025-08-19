@@ -16,7 +16,7 @@ Il combine mécanique, électronique et, dans les futures étapes, intelligence 
 - Servomoteurs MG995
 - Pince mécanique 
 - Capteur INA219 pour mesure de courant
-- Structure métallique sur mesure
+- Structure métallique
 - Alimentation externe pour servos
 
 ---
