@@ -9,7 +9,8 @@ Dans ce document, vous trouverez un ensemble de vidéos présentées dans l’or
 
 #### -18/08/2025  9h23, Suivi du développement, Bras robotique
 
-   Correction du code de pilotage des servomoteurs pour reduir le jeu mécanique.[Voir le code Arduino](../../software/Code_arduino.md)
+   Correction du code de pilotage des servomoteurs pour reduir le jeu mécanique.[Voir le code Arduino](https://github.com/Thomas-robotique/Robotic_arm_ptoject/blob/main/software/Code_arduino.md)
+
 
 
 
