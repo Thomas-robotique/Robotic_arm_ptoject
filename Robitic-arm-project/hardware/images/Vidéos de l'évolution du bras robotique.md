@@ -29,7 +29,7 @@ Dans ce document, vous trouverez un ensemble de vidéos présentées dans l’or
    #### -19/08/2025 13:20, Suivi du développement, Bras robotique
 Modification de la fixation du servomoteur situé au sommet du bras robotique, afin de réduire le jeu mécanique et d’améliorer l’angle de rotation.
 
- 3ᵉ vidéo du bras robotique : https://youtu.be/VHtMNOzQYFw
+ 3ᵉ vidéo du bras robotique : (https://youtu.be/VHtMNOzQYFw)
 
 #### Points d’amélioration futurs
 
