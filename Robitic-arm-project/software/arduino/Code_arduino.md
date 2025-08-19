@@ -8,7 +8,7 @@ Ce code contrôle un bras robotique à trois servomoteurs. Chaque servo est atta
 ## Code
 
 
--1ère version du code arduino, ilpermet de controller les deux servo moteurs pour la rotation, XY, XZ et YZ
+-1ère version du code arduino, il permet de controller les deux servo moteurs pour la rotation, XY, XZ et YZ
 ```cpp
 #include <Servo.h>
 
