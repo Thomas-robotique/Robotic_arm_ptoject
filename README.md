@@ -22,9 +22,11 @@ Il combine mécanique, électronique et, dans les futures étapes, intelligence 
 ---
 
 ## Situation actuelle
-En prenant z positif vers le haut et x positif vers nous,
-le bras est composé de 2 rotations : une dans le plan xy et une dans le plan xz et yz.
-Vous trouverez une vidéo de démonstration du bras dans le dossier hardware/image.
+En prenant le plan XY comme référence (le sol), le bras peut effectuer une rotation autour de l’axe Z. Cette rotation est caractérisée par un angle θ, que l’on peut définir comme l’angle entre l’axe X et son image X’. Une fois cette rotation effectuée, on définit le plan X’Z comme le plan dans lequel le bras peut se déplacer.
+Sur cette photo, le servomoteur responsable de la rotation dans le plan X’Z autour de Y' est contrôlé par un encodeur rotatif ( comme un joystik).
+
+
+Pour une meilleur vidualisation, vous retrouverez une vidéo de démonstration du bras dans le dossier hardware/image.
 La carte électrique permet l'alimentation des deux servomoteurs concernés par les 2 rotations, ainsi que le contrôle des servos par la carte Arduino.
 
 Voici une photo de la première version du cêblage
