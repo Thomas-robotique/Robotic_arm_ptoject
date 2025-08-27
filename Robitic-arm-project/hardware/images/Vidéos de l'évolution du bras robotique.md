@@ -26,6 +26,8 @@ Dans ce document, vous trouverez un ensemble de vidéos présentées dans l’or
 
    ---
 
+
+
    #### -19/08/2025 13:20, Suivi du développement, Bras robotique
 Modification de la fixation du servomoteur situé au sommet du bras robotique, afin de réduire le jeu mécanique et d’améliorer l’angle de rotation.
 
@@ -38,5 +40,13 @@ Optimiser davantage la partie mécanique pour obtenir un bras robotique le plus 
 Finaliser la fixation de la pince.
 
 ---
+
+   #### -27/08/2025 22:56, Suivi du développement, Bras robotique
+   Ajout d'un encodeur rotatif pour contrôler la rotation du premier servomoteur.
+   4e vidéo du bras robotique :(https://youtu.be/zPzh-STQNL8)
+   
+#### Points d’amélioration futurs
+Finaliser la fixation de la pince.
+
 
 
