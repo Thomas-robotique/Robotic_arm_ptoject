@@ -140,44 +140,52 @@ void setup() {
 
   Serial.begin(9600);
 
-  servo1.attach(3);          // servo 1 sur D3
-  servo2.attach(5);          // servo 2 sur D5
+  // Attachement des servos
+  servo1.attach(3);  // servo 1 sur D3
+  servo2.attach(5);  // servo 2 sur D5
+
+  // Position initiale
   servo1.write(pos1);
   servo2.write(pos2);
 }
-
+f 
 void loop() {
-  // Encodeur 1, ici l'encodeur return une valeur entre 0 et 180 celon la rotation effectuée.
-  int CLK1 = digitalRead(CLK1);
-  if (CLK1 != lastCLK1 && CLK1 == LOW) {
-    if (digitalRead(DT1) != CLK1) {
-      pos1 += 10;
+  //  Encodeur 1 
+  int currentCLK1 = digitalRead(CLK1); 
+  if (currentCLK1 != lastCLK1 && currentCLK1 == LOW) {
+    if (digitalRead(DT1) != currentCLK1) {
+      pos1 += 10; // sens horaire
     } else {
-      pos1 -= 10;
+      pos1 -= 10; // sens antihoraire, une fois à 0 si l'on continue de diminuer la valeur en tournant l'encodeur, il se bloque et revois 0 idem pour 180.
     }
+
+    // Limites
     if (pos1 < min1) pos1 = min1;
-    if (pos1 > max1) pos1 = max1; //même si une fois à 0 l'on continue de diminuer la valeur en tournant l'encodeur, il se bloque et revois 0 idem pour 180.
+    if (pos1 > max1) pos1 = max1;
+
     servo1.write(pos1);
     Serial.print("Servo1 = "); Serial.println(pos1);
   }
-  lastCLK1 = CLK1;
+  lastCLK1 = currentCLK1;
 
-
-
-  // Encodeur 2
+  // Encodeur 2 
   int currentCLK2 = digitalRead(CLK2);
-  if (currentCLK2 != lastCLK2 && currentCLK2 == LOW) {
+  if (currentCLK2 != lastCLK2 && currentCLK2 == LOW) { /
     if (digitalRead(DT2) != currentCLK2) {
-      pos2 += 10;
+      pos2 += 10; // sens horaire
     } else {
-      pos2 -= 10;
+      pos2 -= 10; // sens antihoraire,
     }
+
+    // Limites
     if (pos2 < min2) pos2 = min2;
     if (pos2 > max2) pos2 = max2;
+
     servo2.write(pos2);
     Serial.print("Servo2 = "); Serial.println(pos2);
   }
   lastCLK2 = currentCLK2;
 }
+
 
 ```
