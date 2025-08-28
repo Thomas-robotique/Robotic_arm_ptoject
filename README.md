@@ -27,7 +27,7 @@ En prenant le plan XY comme référence (le sol), le bras peut effectuer grâce 
 Sur cette photo, le 1e servomoteur et le 2e (en partant du bas) sont contrôlés par 2 encodeurs rotatifs ( joystik).
 
 
-Pour une meilleur vidualisation, vous retrouverez différentes vidéos de démonstration du bras robotique ici [Voir le code Arduino](../../software/arduino/Code_arduino.md)
+Pour une meilleur vidualisation, vous retrouverez différentes vidéos de démonstration du bras robotique ici [Voir le code Arduino](../Robitic-arm-project/software/arduino/Code_arduino.md)
 
 
 La carte électrique permet l'alimentation des deux servomoteurs concernés par les 2 rotations, ainsi que le contrôle des servos par la carte Arduino.
