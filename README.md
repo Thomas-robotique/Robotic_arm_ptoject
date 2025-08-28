@@ -24,12 +24,12 @@ Il combine mécanique, électronique et, dans les futures étapes, intelligence 
 ## Situation actuelle
 En prenant le plan XY comme référence (le sol), le bras peut effectuer grâce au 1er servomoteur, une rotation autour de l’axe Z. Cette rotation est caractérisée par un angle θ, que l’on peut définir comme l’angle entre l’axe X et son image X’. Une fois cette rotation effectuée, on définit le plan X’Z comme le plan qui contient le bras robotique et dans lequel il peut se déplacer.
 
-Sur cette photo, le 2e servomoteur responsable de la rotation dans le plan X’Z autour de Y' est contrôlé par un encodeur rotatif ( comme un joystik).
+Sur cette photo, le 1e servomoteur et le 2e (en partant du bas) sont contrôlés par 2 encodeurs rotatifs ( joystik).
 
 
-Pour une meilleur vidualisation, vous retrouverez une vidéo de démonstration du bras dans le dossier hardware/image.
+Pour une meilleur vidualisation, vous retrouverez différentes vidéos de démonstration du bras robotique ici hardware/image.
 La carte électrique permet l'alimentation des deux servomoteurs concernés par les 2 rotations, ainsi que le contrôle des servos par la carte Arduino.
 
 Voici une photo de la  version actuelle du bras robotique
 
-<img width="1920" height="1080" alt="Bras robotique+ encodeur rotatif" src="https://github.com/user-attachments/assets/474c12fe-c88b-4ac2-9635-37b459f433d6" />
+![photo du bras robotique v5](https://github.com/user-attachments/assets/93f615bb-70fa-482b-91ab-54e0d070fe3c)
