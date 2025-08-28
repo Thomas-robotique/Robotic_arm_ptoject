@@ -2,13 +2,12 @@
 
 Dans ce document, vous retrouverez l'évolution de mes codes Arduino durant le projet.
 
-## Description
-Ce code contrôle un bras robotique à trois servomoteurs. Chaque servo est attaché à une broche spécifique et effectue des mouvements simples. 
+
 
 ## Code
 
 
-## -1ère version du code arduino, il permet de controller les deux servo moteurs pour la rotation du 1er et 2e servomoteur.
+# -1ère version du code arduino, il permet de controller les deux servo moteurs pour la rotation du 1er et 2e servomoteur.
 ```cpp
 #include <Servo.h>
 
@@ -35,7 +34,7 @@ void loop() {
 
 ```
 
-## 2ᵉ version du code : 
+# 2ᵉ version du code : 
 
 j'ai ajouté une boucle for avec des délais pour ralentir les servomoteurs, ce qui a permis de réduire davantage le jeu mécanique. 
 
@@ -110,7 +109,7 @@ void loop() {
 
 
 ```
-## 3e version du code arduino : contrôle par 2 encodeurs
+# 3e version du code arduino : contrôle par 2 encodeurs
 ```cpp
 #include <Servo.h>
 
