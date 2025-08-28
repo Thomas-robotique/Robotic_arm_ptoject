@@ -8,7 +8,7 @@ Ce code contrôle un bras robotique à trois servomoteurs. Chaque servo est atta
 ## Code
 
 
--1ère version du code arduino, il permet de controller les deux servo moteurs pour la rotation du 1er et 2e servomoteur.
+## -1ère version du code arduino, il permet de controller les deux servo moteurs pour la rotation du 1er et 2e servomoteur.
 ```cpp
 #include <Servo.h>
 
@@ -35,7 +35,7 @@ void loop() {
 
 ```
 
--18/08/2025, 2ᵉ version du code : 
+## 2ᵉ version du code : 
 
 j'ai ajouté une boucle for avec des délais pour ralentir les servomoteurs, ce qui a permis de réduire davantage le jeu mécanique. 
 
@@ -108,5 +108,76 @@ void loop() {
   }
 }
 
+
+```
+## 3e version du code arduino : contrôle par 2 encodeurs
+```cpp
+#include <Servo.h>
+
+// === Encodeur 1 ===
+#define CLK1 12
+#define DT1 8
+Servo servo1;
+int pos1 = 90;               // position initiale
+const int min1 = 0;
+const int max1 = 180;
+int lastCLK1 = HIGH;
+
+// === Encodeur 2 ===
+#define CLK2 2
+#define DT2 7
+Servo servo2;
+int pos2 = 90;               // position initiale
+const int min2 = 0;
+const int max2 = 180;
+int lastCLK2 = HIGH;
+
+void setup() {
+  pinMode(CLK1, INPUT_PULLUP);
+  pinMode(DT1, INPUT_PULLUP);
+  pinMode(CLK2, INPUT_PULLUP);
+  pinMode(DT2, INPUT_PULLUP);
+
+  Serial.begin(9600);
+
+  servo1.attach(3);          // servo 1 sur D3
+  servo2.attach(5);          // servo 2 sur D5
+  servo1.write(pos1);
+  servo2.write(pos2);
+}
+
+void loop() {
+  // Encodeur 1, ici l'encodeur return une valeur entre 0 et 180 celon la rotation effectuée.
+  int CLK1 = digitalRead(CLK1);
+  if (CLK1 != lastCLK1 && CLK1 == LOW) {
+    if (digitalRead(DT1) != CLK1) {
+      pos1 += 10;
+    } else {
+      pos1 -= 10;
+    }
+    if (pos1 < min1) pos1 = min1;
+    if (pos1 > max1) pos1 = max1; //même si une fois à 0 l'on continue de diminuer la valeur en tournant l'encodeur, il se bloque et revois 0 idem pour 180.
+    servo1.write(pos1);
+    Serial.print("Servo1 = "); Serial.println(pos1);
+  }
+  lastCLK1 = CLK1;
+
+
+
+  // Encodeur 2
+  int currentCLK2 = digitalRead(CLK2);
+  if (currentCLK2 != lastCLK2 && currentCLK2 == LOW) {
+    if (digitalRead(DT2) != currentCLK2) {
+      pos2 += 10;
+    } else {
+      pos2 -= 10;
+    }
+    if (pos2 < min2) pos2 = min2;
+    if (pos2 > max2) pos2 = max2;
+    servo2.write(pos2);
+    Serial.print("Servo2 = "); Serial.println(pos2);
+  }
+  lastCLK2 = currentCLK2;
+}
 
 ```
