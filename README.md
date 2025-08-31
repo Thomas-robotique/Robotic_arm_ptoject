@@ -24,8 +24,11 @@ Il combine mécanique, électronique et, dans les futures étapes, intelligence 
 ## Situation actuelle
 
 Le bras robotique est constitué de 3 servomoteurs, numérotés 1, 2 et 3 en partant du bas.
+
 -Le 1er servomoteur est responsable de la rotation du bras sur lui-même.
+
 -Le 2e servomoteur est responsable de l’abaissement du bras.
+
 -Le 3e servomoteur est responsable de l’inclinaison de la pince.
 
 
