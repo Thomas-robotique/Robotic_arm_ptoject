@@ -13,7 +13,7 @@ Dans ce document, vous trouverez un ensemble de vidéos présentées dans l’or
 
 
 
-
+git mv Vidéos_du_bras_robotique.md Videos_du_bras_robotique.md
 
    
    Fixation du bras sur une planche en bois afin de réduire le jeu mécanique.
