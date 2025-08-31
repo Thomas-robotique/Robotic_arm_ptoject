@@ -44,5 +44,5 @@ Sur cette photo, le 1e servomoteur et le 2e (en partant du bas) sont contrôlés
 Pour une meilleur vidualisation, vous retrouverez différentes vidéos de démonstration du bras robotique ici 
 
 
-[Voir les vidéos](../Robitic-arm-project/hardware/images/Vidéos de l'évolution du bras robotique.md).
+[Voir les vidéos](../Robitic-arm-project/hardware/images/Vidéos_du_bras_robotique.md).
 
