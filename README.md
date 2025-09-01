@@ -29,7 +29,7 @@ Le bras robotique est constitué de 3 servomoteurs, numérotés 1, 2 et 3 en par
 
 -Le 2e servomoteur est responsable de l’abaissement du bras.
 
--Le 3e servomoteur est responsable de l’inclinaison de la pince.
+-Le 3e servomoteur est responsable de l’inclinaison de la pince ( pas encore fixée).
 
 
 Enfin La carte électrique permet l'alimentation des 3 servomoteurs ainsi que le contrôle des servos par la carte Arduino.
