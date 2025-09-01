@@ -47,7 +47,9 @@ Limiter le jeu mécanique.
    
 #### Points d’amélioration futurs
 Finaliser la fixation de la pince.
+
 Ajouter 2 encodeurs.
+
 Limiter le jeu mécanique.
 
 
