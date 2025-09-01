@@ -3,7 +3,7 @@ Dans ce document, vous trouverez un ensemble de vidéos présentées dans l’or
 
 #### -17/08/2025 20:28, Suivi du développement, Bras robotique
  1ʳᵉ vidéo du bras : il possède donc deux rotations, mais du jeu reste à corriger.
-(https://youtu.be/13riqU6JMd4)
+(https://youtu.be/0k7IBRY94nI)
 
 ---
 
