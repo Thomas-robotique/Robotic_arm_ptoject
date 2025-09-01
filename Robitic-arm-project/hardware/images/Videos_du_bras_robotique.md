@@ -68,3 +68,4 @@ Finaliser la fixation de la pince.
 
 Ajouter 1 encodeurs.
 
+Réaliser une vidéo de meilleure qualité, notamment au niveau de la luminosité.
