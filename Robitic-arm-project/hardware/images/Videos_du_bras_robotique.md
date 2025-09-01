@@ -56,11 +56,15 @@ Limiter le jeu mécanique.
 
 #### -28/08/2025  22:04, Suivi du développement, Bras robotique
 Ajout d'un 2e encodeur pour le 2e servomoteur.
+
 Ajout de 2 pieds métalliques pour supprimer le jeu mécanique.
+
 J’ai également repris le câblage sur une breadboard pour que tout soit plus propre.
+
 5e vidéo du bras robotique: (https://youtu.be/TMBsFKxXWAc).
  
 #### Points d’amélioration futurs
 Finaliser la fixation de la pince.
+
 Ajouter 1 encodeurs.
 
