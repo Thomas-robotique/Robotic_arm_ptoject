@@ -34,7 +34,7 @@ Le bras robotique est constitué de 3 servomoteurs, numérotés 1, 2 et 3 en par
 
 Enfin La carte électrique permet l'alimentation des 3 servomoteurs ainsi que le contrôle des servos par la carte Arduino.
 
-Voici une photo de la  version actuelle du bras robotique
+Voici une photo de la  version actuelle du bras robotique, la photo sera rapidement mise à jour pour améliorer la visibilité.
 
 ![photo du bras robotique v5](https://github.com/user-attachments/assets/93f615bb-70fa-482b-91ab-54e0d070fe3c)
 
