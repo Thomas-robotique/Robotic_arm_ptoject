@@ -169,7 +169,7 @@ void loop() {
 
   // Encodeur 2 
   int currentCLK2 = digitalRead(CLK2);
-  if (currentCLK2 != lastCLK2 && currentCLK2 == LOW) { /
+  if (currentCLK2 != lastCLK2 && currentCLK2 == LOW) { 
     if (digitalRead(DT2) != currentCLK2) {
       pos2 += 10; // sens horaire
     } else {
