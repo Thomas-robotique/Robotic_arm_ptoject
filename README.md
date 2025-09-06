@@ -38,7 +38,7 @@ Voici une photo de la  version actuelle du bras robotique, la photo sera rapidem
 
 ![photo_du_robot_v6](https://github.com/user-attachments/assets/51399bfc-dd44-404a-a3fc-86c88343d2a3)
 
-Sur cette photo, le 1e servomoteur et le 2e (en partant du bas) sont contrôlés par 2 encodeurs rotatifs ( joystik).
+
 
 
 Pour une meilleur vidualisation, vous retrouverez différentes vidéos de démonstration du bras robotique ici 
