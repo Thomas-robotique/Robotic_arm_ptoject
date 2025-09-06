@@ -79,7 +79,7 @@ J’ai également fixé la pince pour vérifier que les servomoteurs supportaien
 
 J’ai amélioré la partie électrique en soutenant certains composants pour éviter les faux contacts.
 
-voici la 6e vidéo du bras robotique : (https://youtu.be/ztZ0tLK8lI0)
+voici la 6e vidéo du bras robotique : ([https://youtu.be/ztZ0tLK8lI0](https://youtu.be/Qs0z032AmsQ))
 
 J’ai aussi mis en marche la pince qui permet de détecter la saisie d’un objet et de s’arrêter pour éviter la surchauffe du servomoteur. 
 vidéo de la pince : (https://youtu.be/OcJf3KXo4jQ).
