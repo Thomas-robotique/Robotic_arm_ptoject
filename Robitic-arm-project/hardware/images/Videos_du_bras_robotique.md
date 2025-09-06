@@ -81,7 +81,12 @@ J’ai amélioré la partie électrique en soutenant certains composants pour é
 
 voici la 6e vidéo du bras robotique : ([https://youtu.be/ztZ0tLK8lI0](https://youtu.be/Qs0z032AmsQ))
 
-J’ai aussi mis en marche la pince qui permet de détecter la saisie d’un objet et de s’arrêter pour éviter la surchauffe du servomoteur. 
+J’ai aussi mis en marche la pince, qui permet de détecter la saisie d’un objet et de s’arrêter pour éviter la surchauffe du servomoteur. 
+
+J’ai ajouté un INA219 en série avec le servomoteur pour contrôler l’ouverture et la fermeture de la pince. Lorsque le capteur détecte un pic de courant prolongé, indiquant qu’un objet a été saisi, le code stoppe la pince.
+Vous retrouverez le code arduino de la pince ici [Voir le code Arduino](../../software/arduino/Code_arduino.md)
+
+
 vidéo de la pince : (https://youtu.be/Qs0z032AmsQ).
 #### Points d’amélioration futurs
 
