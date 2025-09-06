@@ -36,7 +36,7 @@ Enfin La carte électrique permet l'alimentation des 3 servomoteurs ainsi que le
 
 Voici une photo de la  version actuelle du bras robotique, la photo sera rapidement mise à jour pour améliorer la visibilité.
 
-![photo du bras robotique v5](https://github.com/user-attachments/assets/93f615bb-70fa-482b-91ab-54e0d070fe3c)
+![photo_du_robot_v6](https://github.com/user-attachments/assets/51399bfc-dd44-404a-a3fc-86c88343d2a3)
 
 Sur cette photo, le 1e servomoteur et le 2e (en partant du bas) sont contrôlés par 2 encodeurs rotatifs ( joystik).
 
@@ -45,5 +45,6 @@ Pour une meilleur vidualisation, vous retrouverez différentes vidéos de démon
 
 
 [Voir les vidéos du bras robotique](Robitic-arm-project/hardware/images/Videos_du_bras_robotique.md)
+
 
 
