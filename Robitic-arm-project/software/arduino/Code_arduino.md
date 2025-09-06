@@ -188,3 +188,68 @@ void loop() {
 
 
 ```
+
+# code arduino de la pince controlant la pince, saisi d'objet :
+
+```cpp
+#include <Wire.h>
+#include <Adafruit_INA219.h>
+#include <Servo.h>
+
+Adafruit_INA219 ina219;
+Servo pince;
+
+const int courantSeuil = 600; // mA
+int targetPos = 180;          // position cible initiale
+bool objetSaisi = false;
+
+void setup() {
+  Serial.begin(9600);
+  ina219.begin();
+  pince.attach(11);
+  Serial.println("Systeme demarre");
+}
+
+void loop() {
+  // Aller vers la cible
+  pince.write(targetPos);
+
+  // Surveiller pendant 1s environs, ( mesures au cour du mouvement)
+  for (int t = 0; t < 100; t++) {
+    float current = ina219.getCurrent_mA();
+    float voltage = ina219.getBusVoltage_V();
+
+// print de la tension et du courant et de l'état de la pince (entrain de fermer ou d'ouvrire)
+    Serial.print("Cible: "); Serial.print(targetPos);
+    Serial.print(" | Tension: "); Serial.print(voltage);
+    Serial.print(" V | Courant: "); Serial.print(current);
+    Serial.println(" mA");
+
+    // Détection objet uniquement en fermeture (vers 180)
+    if (targetPos == 40 && current > courantSeuil) {
+      Serial.println(" Objet detecte donc servo desactive !");
+      objetSaisi = true;
+
+      // On coupe le signal du servo, il garde sa position mécanique sans forcer pour maintenir l'objet saisi
+      pince.detach();
+      break;
+    }
+
+    delay(10);
+  }
+
+  // Si objet saisi, on attend avant de repartir
+  if (objetSaisi) {
+    delay(10000);             // garde l'objet sans forcer pendant 10s
+    objetSaisi = false;
+
+    // On réattache le servo pour pouvoir le bouger de nouveau
+    pince.attach(11);
+    targetPos = 40;          // repartir en ouverture
+  } else {
+    // Sinon on alterne simplement
+    if (targetPos == 180) targetPos = 40;
+    else targetPos = 180;
+  }
+}
+```
