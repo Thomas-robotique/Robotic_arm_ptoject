@@ -189,7 +189,7 @@ void loop() {
 
 ```
 
-# code arduino de la pince controlant la pince, saisi d'objet :
+# code arduino controlant la pince, saisi d'objet :
 
 ```cpp
 #include <Wire.h>
