@@ -225,8 +225,9 @@ void loop() {
     Serial.print(" V | Courant: "); Serial.print(current);
     Serial.println(" mA");
 
-    // Détection objet uniquement en fermeture (vers 180)
-    if (targetPos == 40 && current > courantSeuil) {
+    // Détection objet uniquement en fermeture (vers 20),Quand la pince se ferme, elle se positionne à 180 degrés, et lorsqu’elle s’ouvre, elle revient à 20 degrés.
+
+    if (targetPos == 20 && current > courantSeuil) {
       Serial.println(" Objet detecte donc servo desactive !");
       objetSaisi = true;
 
@@ -245,10 +246,10 @@ void loop() {
 
     // On réattache le servo pour pouvoir le bouger de nouveau
     pince.attach(11);
-    targetPos = 40;          // repartir en ouverture
+    targetPos = 20;          // repartir en ouverture
   } else {
     // Sinon on alterne simplement
-    if (targetPos == 180) targetPos = 40;
+    if (targetPos == 180) targetPos = 20;
     else targetPos = 180;
   }
 }
