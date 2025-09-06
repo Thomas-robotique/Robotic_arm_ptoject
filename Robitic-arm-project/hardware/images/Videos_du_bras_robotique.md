@@ -82,7 +82,7 @@ J’ai amélioré la partie électrique en soutenant certains composants pour é
 voici la 6e vidéo du bras robotique : ([https://youtu.be/ztZ0tLK8lI0](https://youtu.be/Qs0z032AmsQ))
 
 J’ai aussi mis en marche la pince qui permet de détecter la saisie d’un objet et de s’arrêter pour éviter la surchauffe du servomoteur. 
-vidéo de la pince : (https://youtu.be/OcJf3KXo4jQ).
+vidéo de la pince : (https://youtu.be/Qs0z032AmsQ).
 #### Points d’amélioration futurs
 
 Je dois encore réduire le jeu mécanique et regrouper toutes les fonctionnalités du bras robotique (déplacement, saisie d’objet) dans un même code.
