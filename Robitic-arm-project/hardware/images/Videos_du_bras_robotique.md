@@ -69,3 +69,19 @@ Finaliser la fixation de la pince.
 Ajouter 1 encodeurs.
 
 Réaliser une vidéo de meilleure qualité, notamment au niveau de la luminosité.
+
+
+#### - 06/09/2025 20:42, Suivi du développement, Bras robotique
+
+J’ai ajouté deux pieds métalliques supplémentaires. Ce sont des équerres que j’ai moi-même usinées afin de leur donner la forme idéale. L’objectif est de réduire au maximum le jeu mécanique.
+
+J’ai également fixé la pince pour vérifier que les servomoteurs supportaient bien son poids.
+
+J’ai amélioré la partie électrique en soutenant certains composants pour éviter les faux contacts.
+
+voici la 6e vidéo du bras robotique : (https://youtu.be/ztZ0tLK8lI0)
+
+#### Points d’amélioration futurs
+
+Je dois encore réduire le jeu mécanique et regrouper toutes les fonctionnalités du bras robotique (déplacement, saisie d’objet) dans un même code.
+
