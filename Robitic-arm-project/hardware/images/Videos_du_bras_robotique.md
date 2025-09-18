@@ -92,3 +92,12 @@ vidéo de la pince : (https://youtu.be/Qs0z032AmsQ).
 
 Je dois encore réduire le jeu mécanique et regrouper toutes les fonctionnalités du bras robotique (déplacement, saisie d’objet) dans un même code.
 
+
+
+#### - 19/09/2025, 16:04 Suivi du développement, Bras robotique
+
+Le bras robotique est pour la première fois fonctionnel, c'est à dire mouvement du bras + saisi d'objet avec la pince.
+Le montage finale de la pince avait déjà été réalisé le 06/09/2025, j'ai alors réaliser un code arduino complet pour piloter le bras robotique avec la pince. Pour démontrer le fonctionnement j'ai commander le bras pour qu'il saississe et lâche un objet.
+
+voici la 7e vidéo de bras robotique fonctionel ::(https://youtu.be/GEP4Osftczw).
+
