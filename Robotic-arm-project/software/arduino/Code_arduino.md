@@ -279,7 +279,7 @@ void fermerPince() {
   pince.write(40); // fermée
 
 
-  int compteur = 0;           // Le compteur sert à compter le nombre de fois que le seuil de courant est                                                                                 dépassé,
+  int compteur = 0;           // Le compteur sert à compter le nombre de fois que l'intensité du courant est au dessus du seuil                                   
                                 // afin d’éviter que la pince interprète une variation de courant anodine comme un objet saisi.
 
 
