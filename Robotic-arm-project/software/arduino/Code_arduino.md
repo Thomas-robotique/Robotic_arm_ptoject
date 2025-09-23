@@ -189,68 +189,128 @@ void loop() {
 
 ```
 
-# code arduino controlant la pince, saisi d'objet :
+# code arduino de la vidéo 7 du bras robotique controlant la pince, saisi d'objet :
 
-```cpp
-#include <Wire.h>
+```#include <Wire.h>
 #include <Adafruit_INA219.h>
 #include <Servo.h>
 
+// === INA219 ===
 Adafruit_INA219 ina219;
-Servo pince;
 
-const int courantSeuil = 600; // mA
-int targetPos = 180;          // position cible initiale
+// === Servos ===
+Servo pince;
+Servo servo1;
+Servo servo2;
+Servo servo3;
+
+// === Pince ===
+const int PIN_SERVO = 11;
+const int courantSeuil = 500;    // seuil en mA
+const int mesuresConsecutives = 5;  
 bool objetSaisi = false;
 
 void setup() {
   Serial.begin(9600);
-  ina219.begin();
-  pince.attach(11);
-  Serial.println("Systeme demarre");
+
+  // Attacher servos
+  servo2.attach(5);
+  servo3.attach(6);
+  servo1.attach(3);
+
+  pince.attach(PIN_SERVO);
+  pince.write(180); // ouverte au départ
+
+  // INA219
+  if (!ina219.begin()) {
+    Serial.println("INA219 non detecte !");
+    while (1);
+  }
+  ina219.setCalibration_32V_2A();
+  Serial.println("Demarrage OK");
 }
 
 void loop() {
-  // Aller vers la cible
-  pince.write(targetPos);
+  // === Séquence de démonstration ===
 
-  // Surveiller pendant 1s environs, ( mesures au cour du mouvement)
-  for (int t = 0; t < 100; t++) {
+  // Position de départ
+  servo1.write(85);
+  servo2.write(65);
+  servo3.write(60);
+  ouvrirPince();
+
+  delay(1000);
+  fermerPince();
+  delay(800);
+// Le bras se lève après avoir saisi l'objet
+servo2.write(95);
+    delay(800);
+
+// Le bras pivote avec l'objet
+  servo1.write(35);
+  delay(800);
+
+// Le bras se baisse avec l'objet
+
+servo2.write(65);
+delay(500);
+
+// Le bras lâche l'objet
+ouvrirPince();
+delay(800);
+
+// Le bras reprend l'objet
+fermerPince();
+
+// Le bras se lève après avoir saisi l'objet
+  servo2.write(95);
+delay(500);
+ // Le bras recommence
+
+ 
+  
+}
+
+// Fonction pour fermer la pince 
+void fermerPince() {
+  Serial.println("Fermeture de la pince...");
+  pince.attach(PIN_SERVO);
+  pince.write(40); // fermée
+
+
+  int compteur = 0;           // Le compteur sert à compter le nombre de fois que le seuil de courant est                                                                                 dépassé,
+                                // afin d’éviter que la pince interprète une variation de courant anodine comme un objet saisi.
+
+
+  for (int t = 0; t < 50; t++) {  // surveillance rapide
     float current = ina219.getCurrent_mA();
-    float voltage = ina219.getBusVoltage_V();
-
-// print de la tension et du courant et de l'état de la pince (entrain de fermer ou d'ouvrire)
-    Serial.print("Cible: "); Serial.print(targetPos);
-    Serial.print(" | Tension: "); Serial.print(voltage);
-    Serial.print(" V | Courant: "); Serial.print(current);
+    Serial.print("Courant pince = ");
+    Serial.print(current);
     Serial.println(" mA");
 
-    // Détection objet uniquement en fermeture (vers 20),Quand la pince se ferme, elle se positionne à 180 degrés, et lorsqu’elle s’ouvre, elle revient à 20 degrés.
-
-    if (targetPos == 20 && current > courantSeuil) {
-      Serial.println(" Objet detecte donc servo desactive !");
-      objetSaisi = true;
-
-      // On coupe le signal du servo, il garde sa position mécanique sans forcer pour maintenir l'objet saisi
-      pince.detach();
-      break;
+    if (current > courantSeuil) {
+      compteur++;                                // À chaque fois que le seuil est dépassé, le compteur est incrémenté de 1.
+1                
+      if (compteur >= mesuresConsecutives) {
+        Serial.println("Objet saisi ! Servo détaché pour bloquer sans forcer.");
+        pince.detach(); // bloque mécaniquement
+        objetSaisi = true;
+        return;
+      }
+    } else {
+      compteur = 0;
     }
-
-    delay(10);
+    delay(5);
   }
-
-  // Si objet saisi, on attend avant de repartir
-  if (objetSaisi) {
-    delay(10000);             // garde l'objet sans forcer pendant 10s
-    objetSaisi = false;
-
-    // On réattache le servo pour pouvoir le bouger de nouveau
-    pince.attach(11);
-    targetPos = 20;          // repartir en ouverture
-  } else {
-    // Sinon on alterne simplement
-    if (targetPos == 180) targetPos = 20;
-    else targetPos = 180;
-  }
+  objetSaisi = false;
 }
+
+// === Fonction pour ouvrir la pince ===
+void ouvrirPince() {
+  Serial.println("Ouverture de la pince...");
+  pince.attach(PIN_SERVO);
+  pince.write(180); // ouverte
+  objetSaisi = false;
+}
+
 ```
