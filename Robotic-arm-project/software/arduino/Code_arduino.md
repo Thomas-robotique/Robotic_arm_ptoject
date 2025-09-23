@@ -191,7 +191,8 @@ void loop() {
 
 # code arduino de la vidéo 7 du bras robotique controlant la pince, saisi d'objet :
 
-```#include <Wire.h>
+```cpp
+#include <Wire.h>
 #include <Adafruit_INA219.h>
 #include <Servo.h>
 
@@ -305,7 +306,7 @@ void fermerPince() {
   objetSaisi = false;
 }
 
-// === Fonction pour ouvrir la pince ===
+//  Fonction pour ouvrir la pince
 void ouvrirPince() {
   Serial.println("Ouverture de la pince...");
   pince.attach(PIN_SERVO);
