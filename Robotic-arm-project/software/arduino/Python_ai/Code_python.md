@@ -1,4 +1,4 @@
-'''cpp
+```cpp
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
@@ -21,7 +21,7 @@ model.fit(X_train, y_train)
 
 # Évaluer
 score = model.score(X_test, y_test)
-'''
+```
 print("Précision du modèle :", score)
 
 # Exemple de prédiction
