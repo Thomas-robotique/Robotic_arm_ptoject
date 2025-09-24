@@ -21,10 +21,10 @@ model.fit(X_train, y_train)
 
 # Évaluer
 score = model.score(X_test, y_test)
-```
+
 print("Précision du modèle :", score)
 
 # Exemple de prédiction
 prediction = model.predict([[45, 12]])  # angle capteur = 45°, distance = 12 cm
 print("Angles prédits :", prediction)
-
+```
