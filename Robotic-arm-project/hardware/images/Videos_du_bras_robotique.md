@@ -16,7 +16,7 @@ Chaque vidéo illustre une amélioration technique, comme la résolution d’un 
 - Fixation du bras sur une planche en bois pour limiter les vibrations  
 - Ajout d’une nouvelle articulation destinée à soutenir la pince  
 
-2ᵉ vidéo du bras robotique : [2e vidéo][https://youtu.be/2np7a8PfgLk](https://youtu.be/2np7a8PfgLk)
+2ᵉ vidéo du bras robotique : [2e vidéo](https://youtu.be/2np7a8PfgLk)
 
 #### Points d’amélioration futurs :
 - Améliorer encore le jeu mécanique  
