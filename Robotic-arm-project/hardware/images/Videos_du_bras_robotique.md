@@ -16,7 +16,7 @@ Chaque vidéo illustre une amélioration technique, comme la résolution d’un 
 - Fixation du bras sur une planche en bois pour limiter les vibrations  
 - Ajout d’une nouvelle articulation destinée à soutenir la pince  
 
-2ᵉ vidéo du bras robotique : [https://youtu.be/2np7a8PfgLk](https://youtu.be/2np7a8PfgLk)
+2ᵉ vidéo du bras robotique : [2e vidéo][https://youtu.be/2np7a8PfgLk](https://youtu.be/2np7a8PfgLk)
 
 #### Points d’amélioration futurs :
 - Améliorer encore le jeu mécanique  
@@ -27,7 +27,7 @@ Chaque vidéo illustre une amélioration technique, comme la résolution d’un 
 ### - 19/08/2025 13:20, Suivi du développement, Bras robotique
 - Modification de la fixation du servomoteur situé au sommet du bras pour réduire le jeu mécanique et améliorer l’angle de rotation  
 
-3ᵉ vidéo du bras robotique : [[https://youtu.be/AkJcX3Q7wKA)](https://youtu.be/AkJcX3Q7wKA)
+3ᵉ vidéo du bras robotique : [3e vidéo](https://youtu.be/AkJcX3Q7wKA)
 #### Points d’amélioration futurs :
 - Optimiser davantage la mécanique pour stabiliser le bras  
 - Finaliser la fixation de la pince  
@@ -38,7 +38,7 @@ Chaque vidéo illustre une amélioration technique, comme la résolution d’un 
 ### - 27/08/2025 22:56, Suivi du développement, Bras robotique
 - Ajout d’un encodeur rotatif pour contrôler la rotation du premier servomoteur  
 
-4ᵉ vidéo du bras robotique : [https://youtu.be/zPzh-STQNL8](https://youtu.be/zPzh-STQNL8)
+4ᵉ vidéo du bras robotique : [4e vidéo](https://youtu.be/zPzh-STQNL8)
 
 #### Points d’amélioration futurs :
 - Finaliser la fixation de la pince  
@@ -52,7 +52,7 @@ Chaque vidéo illustre une amélioration technique, comme la résolution d’un 
 - Ajout de 2 pieds métalliques afin de supprimer le jeu mécanique  
 - Reprise du câblage sur breadboard pour un montage plus propre  
 
-5ᵉ vidéo du bras robotique : [https://youtu.be/TMBsFKxXWAc](https://youtu.be/TMBsFKxXWAc)
+5ᵉ vidéo du bras robotique : [5e vidéo](https://youtu.be/TMBsFKxXWAc)
 
 #### Points d’amélioration futurs :
 - Finaliser la fixation de la pince  
@@ -66,13 +66,13 @@ Chaque vidéo illustre une amélioration technique, comme la résolution d’un 
 - Fixation définitive de la pince et vérification de la capacité des servomoteurs à supporter son poids  
 - Amélioration de la partie électrique (meilleure tenue des composants, réduction des faux contacts)  
 
-6ᵉ vidéo du bras robotique : [https://youtu.be/Qs0z032AmsQ](https://youtu.be/Qs0z032AmsQ)
+6ᵉ vidéo du bras robotique : [6e vidéo](https://youtu.be/Qs0z032AmsQ)
 
 - Mise en fonctionnement de la pince avec détection de la saisie d’objet (arrêt automatique pour éviter la surchauffe)  
 - Intégration d’un capteur INA219 en série avec le servomoteur pour surveiller le courant. Lorsque le capteur détecte un pic prolongé (objet saisi), le code stoppe la pince.  
 [Voir le code Arduino](../../software/arduino/Code_arduino.md)  
 
-Vidéo de la pince : [https://youtu.be/Qs0z032AmsQ](https://youtu.be/Qs0z032AmsQ)
+Vidéo de la pince : [vidéo de la pince](https://youtu.be/Qs0z032AmsQ)
 
 #### Points d’amélioration futurs :
 - Réduire encore le jeu mécanique  
@@ -86,7 +86,7 @@ Le montage final de la pince avait déjà été réalisé le 06/09/2025. Un code
 
 Une séquence de démonstration a été programmée : le bras saisit un objet, le déplace puis le relâche.  
 
-7ᵉ vidéo du bras robotique en fonctionnement : [https://youtu.be/GEP4Osftczw](https://youtu.be/GEP4Osftczw)
+7ᵉ vidéo du bras robotique en fonctionnement : [7e vidéo](https://youtu.be/GEP4Osftczw)
 
 #### Points d’amélioration futurs :
 - Améliorer l’esthétique et la sécurité du bras  
