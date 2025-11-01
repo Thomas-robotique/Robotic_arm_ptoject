@@ -43,6 +43,7 @@ Voici une photo de la  version actuelle du bras robotique.
 
 
 Pour une meilleur vidualisation, vous retrouverez différentes vidéos de démonstration du bras robotique ici 
+Par ailleurs, l’ensemble des vidéos retraçant l’évolution du bras robotique depuis les premières étapes du projet est disponible.
 
 
 [Voir les vidéos du bras robotique](Robotic-arm-project/hardware/images/Videos_du_bras_robotique.md)
