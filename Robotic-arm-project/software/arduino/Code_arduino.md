@@ -7,7 +7,7 @@ Dans ce document, vous retrouverez l'évolution de mes codes Arduino durant le p
 ## Code
 
 
-# -1ère version du code arduino, il permet de controller les deux servo moteurs pour la rotation du 1er et 2e servomoteur.
+# -1ère version du code arduino, il permet de contrôler les deux premiers servomoteurs.
 ```cpp
 #include <Servo.h>
 
@@ -36,9 +36,9 @@ void loop() {
 
 # 2ᵉ version du code : 
 
-j'ai ajouté une boucle for avec des délais pour ralentir les servomoteurs, ce qui a permis de réduire davantage le jeu mécanique. 
+J'ai ajouté une boucle for avec des délais pour ralentir les servomoteurs, ce qui a permis de réduire  le jeu mécanique. 
 
-J'ai également ajouté un 3ᵉ servomoteur, responsable de l'ouverture et de la pince.
+J'ai également ajouté un 3ᵉ servomoteur, responsable de l'ouverture et de la fermeture de la pince.
 
 ```cpp
 #include <Servo.h>
@@ -52,8 +52,8 @@ int position2 = 0;   // départ servo2
 int cible2 = 100;    // on veut l’amener de 90° à 180°
 int cible1 = 90;
 int delaiMs = 20;    // temps entre chaque pas
-int position3 = 0;
-int cible3 = 180; 
+int position3 = 0;   // ouverture de la pince
+int cible3 = 180;    // fermeture de la pince
 
 void setup() {
   servo1.attach(2);
@@ -109,7 +109,9 @@ void loop() {
 
 
 ```
-# 3e version du code arduino : contrôle par 2 encodeurs
+# 3e version du code arduino : contrôle par deux encodeurs
+
+ Ce code permet de contrôler les deux premiers servomoteurs à l’aide de deux encodeurs.
 ```cpp
 #include <Servo.h>
 
@@ -147,7 +149,7 @@ void setup() {
   servo1.write(pos1);
   servo2.write(pos2);
 }
-f 
+ 
 void loop() {
   //  Encodeur 1 
   int currentCLK1 = digitalRead(CLK1); 
@@ -155,11 +157,11 @@ void loop() {
     if (digitalRead(DT1) != currentCLK1) {
       pos1 += 10; // sens horaire
     } else {
-      pos1 -= 10; // sens antihoraire, une fois à 0 si l'on continue de diminuer la valeur en tournant l'encodeur, il se bloque et revois 0 idem pour 180.
+      pos1 -= 10; // sens antihoraire
     }
 
     // Limites
-    if (pos1 < min1) pos1 = min1;
+    if (pos1 < min1) pos1 = min1;  // une fois à 0 si l'on continue de diminuer la valeur en tournant                                         l'encodeur, il se bloque et revoie 0 idem pour 180.
     if (pos1 > max1) pos1 = max1;
 
     servo1.write(pos1);
@@ -173,7 +175,7 @@ void loop() {
     if (digitalRead(DT2) != currentCLK2) {
       pos2 += 10; // sens horaire
     } else {
-      pos2 -= 10; // sens antihoraire,
+      pos2 -= 10; // sens antihoraire
     }
 
     // Limites
@@ -189,7 +191,7 @@ void loop() {
 
 ```
 
-# code arduino de la vidéo 7 du bras robotique controlant la pince, saisi d'objet :
+# code arduino de la vidéo 7 du bras robotique contrôlant la pince, saisie d'objet :
 
 ```cpp
 #include <Wire.h>
@@ -222,7 +224,9 @@ void setup() {
   pince.attach(PIN_SERVO);
   pince.write(180); // ouverte au départ
 
-  // INA219
+
+  // INA219                                     // Vérifie la connexion correcte de l’INA219 ; facilite le diagnostic en cas d’erreur.
+       
   if (!ina219.begin()) {
     Serial.println("INA219 non detecte !");
     while (1);
@@ -232,7 +236,8 @@ void setup() {
 }
 
 void loop() {
-  // === Séquence de démonstration ===
+
+  //  Séquence de démonstration 
 
   // Position de départ
   servo1.write(85);
@@ -291,8 +296,9 @@ void fermerPince() {
 
     if (current > courantSeuil) {
       compteur++;                                // À chaque fois que le seuil est dépassé, le compteur est incrémenté de 1.
-1                
-      if (compteur >= mesuresConsecutives) {
+                
+      if (compteur >= mesuresConsecutives)     // Si le compteur dépasse le seuil défini, cela signifie qu’un objet a été détecté par la pince.
+{
         Serial.println("Objet saisi ! Servo détaché pour bloquer sans forcer.");
         pince.detach(); // bloque mécaniquement
         objetSaisi = true;
