@@ -68,8 +68,8 @@ Chaque vidéo illustre une amélioration technique, comme la résolution d’un 
 
 6ᵉ vidéo du bras robotique : [6e vidéo](https://youtu.be/Qs0z032AmsQ)
 
-- Mise en fonctionnement de la pince avec détection de la saisie d’objet (arrêt automatique pour éviter la surchauffe)  
-- Intégration d’un capteur INA219 en série avec le servomoteur pour surveiller le courant. Lorsque le capteur détecte un pic prolongé (objet saisi), le code stoppe la pince.  
+- Mise en fonctionnement de la pince avec détection de la saisie d’objets (arrêt automatique pour éviter la surchauffe)  
+- Intégration d’un capteur INA219 en série avec le servomoteur pour surveiller le courant. Lorsque le capteur détecte un pic prolongé (objet saisi), le code arrête la fermeture de la pince.  
 [Voir le code Arduino](../../software/arduino/Code_arduino.md)  
 
 Vidéo de la pince : [vidéo de la pince](https://youtu.be/Qs0z032AmsQ)
@@ -90,4 +90,4 @@ Une séquence de démonstration a été programmée : le bras saisit un objet, l
 
 #### Points d’amélioration futurs :
 - Améliorer l’esthétique et la sécurité du bras  
-- Organiser et sécuriser le câblage afin d’éviter tout faux contact ou court-circuit  
+- Organiser et sécuriser le câblage afin d’éviter tout faux contacts ou courts-circuits  
