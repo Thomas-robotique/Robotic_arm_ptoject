@@ -27,7 +27,7 @@ Chaque vidéo illustre une amélioration technique, comme la résolution d’un 
 ### - 19/08/2025 13:20, Suivi du développement, Bras robotique
 - Modification de la fixation du servomoteur situé au sommet du bras pour réduire le jeu mécanique et améliorer l’angle de rotation  
 
-3ᵉ vidéo du bras robotique : [3e vidéo](https://youtu.be/AkJcX3Q7wKA))
+3ᵉ vidéo du bras robotique : [3e vidéo](https://youtu.be/AkJcX3Q7wKA)
 #### Points d’amélioration futurs :
 - Optimiser davantage la mécanique pour stabiliser le bras  
 - Finaliser la fixation de la pince  
