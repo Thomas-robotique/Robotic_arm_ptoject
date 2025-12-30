@@ -33,7 +33,7 @@ Le bras robotique est constitué de 3 servomoteurs, numérotés 1, 2 et 3 en par
 
 
 Enfin, la carte électrique (breadboard) permet l'alimentation des 3 servomoteurs ainsi que le contrôle des servos par la carte Arduino.
-Les 3 servomoteurs sont alimentés par une alimentation externe composée de 4 piles AA rechargeables de 1.5V et 2.5 mAh.
+Les 3 servomoteurs sont alimentés par une alimentation externe composée de 4 piles AA rechargeables de 1.5V et 2.5 Ah.
 
 Voici une photo de la  version actuelle du bras robotique.
 
@@ -42,7 +42,7 @@ Voici une photo de la  version actuelle du bras robotique.
 
 
 
-Pour une meilleur visualisation, vous retrouverez différentes vidéos de démonstration du bras robotique ici 
+Pour une meilleure visualisation, vous retrouverez différentes vidéos de démonstration du bras robotique ici 
 
 
 
