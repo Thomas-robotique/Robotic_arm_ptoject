@@ -321,3 +321,165 @@ void ouvrirPince() {
 }
 
 ```
+
+
+
+
+# Code Arduino permettant le contrôle du bras robotique et de la pince avec trois encodeurs
+
+```cpp
+#include <Wire.h>
+#include <Adafruit_INA219.h>
+#include <Servo.h>
+
+// === INA219 ===
+Adafruit_INA219 ina219;
+
+// === Servos ===
+Servo pince;
+Servo servo1;
+Servo servo2;
+Servo servo3;
+
+
+// Encodeur 1
+#define CLK1 12
+#define DT1 8
+#define SW1 10   // bouton poussoir de l’encodeur 1
+int pos1 = 90;
+const int min1 = 0;
+const int max1 = 180;
+int lastCLK1 = HIGH;
+
+// Encodeur 2
+#define CLK2 2
+#define DT2 7
+int pos2 = 90;
+const int min2 = 0;
+const int max2 = 180;
+int lastCLK2 = HIGH;
+
+// Encodeur 3
+#define CLK3 4
+#define DT3 9
+int pos3 = 90;
+const int min3 = 0;
+const int max3 = 180;
+int lastCLK3 = HIGH;
+
+// === Pince ===
+const int PIN_SERVO = 11;
+const int courantSeuil = 500;    // seuil en mA
+const int mesuresConsecutives = 5;  
+bool pinceFermee = false;       // état de la pince
+bool objetSaisi = false;
+
+void setup() {
+  Serial.begin(9600);
+
+  // Encodeurs
+  pinMode(CLK1, INPUT_PULLUP);
+  pinMode(DT1, INPUT_PULLUP);
+  pinMode(SW1, INPUT_PULLUP);   // bouton encodeur 1
+
+  pinMode(CLK2, INPUT_PULLUP);
+  pinMode(DT2, INPUT_PULLUP);
+
+  pinMode(CLK3, INPUT_PULLUP);
+  pinMode(DT3, INPUT_PULLUP);
+
+  // Attacher servos
+  servo1.attach(5);
+  servo2.attach(6);
+  servo3.attach(3);
+  servo1.write(pos1);
+  servo2.write(pos2);
+  servo3.write(pos3);
+
+  pince.attach(PIN_SERVO);
+  pince.write(40); // ouverte
+
+  // INA219
+  if (!ina219.begin()) {
+    Serial.println("INA219 non detecte !");
+    while (1);
+  }
+  ina219.setCalibration_32V_2A();
+  Serial.println("Demarrage OK");
+}
+
+void loop() {
+  // Contrôle des 3 encodeurs pour les servos 
+  gererEncodeur(CLK1, DT1, servo1, pos1, min1, max1, lastCLK1);
+  gererEncodeur(CLK2, DT2, servo2, pos2, min2, max2, lastCLK2);
+  gererEncodeur(CLK3, DT3, servo3, pos3, min3, max3, lastCLK3);
+
+  // Gestion de la pince avec bouton encodeur 1 
+  if (digitalRead(SW1) == LOW) {   // bouton pressé (actif LOW)
+
+    if (!pinceFermee) {
+      fermerPince();
+      pinceFermee = true;
+    } else {
+      ouvrirPince();
+      pinceFermee = false;
+    }
+  }
+}
+
+// Fonction générique pour gérer un encodeur 
+void gererEncodeur(int clk, int dt, Servo &servo, int &pos, int minPos, int maxPos, int &lastCLK) {
+  int currentCLK = digitalRead(clk);
+  if (currentCLK != lastCLK && currentCLK == LOW) {
+    if (digitalRead(dt) != currentCLK) {
+      pos += 5;
+    } else {
+      pos -= 5;
+    }
+    if (pos < minPos) pos = minPos;
+    if (pos > maxPos) pos = maxPos;
+    servo.write(pos);
+    Serial.print("Servo = "); Serial.println(pos);
+  }
+  lastCLK = currentCLK;
+}
+
+//  Fonction pour fermer la pince 
+void fermerPince() {
+  Serial.println("Fermeture de la pince...");
+
+  pince.attach(PIN_SERVO);
+  pince.write(40);
+
+  int compteur = 0;
+
+  for (int t = 0; t < 100; t++) {  // environ 1 seconde de surveillance
+    float current = ina219.getCurrent_mA();
+    Serial.print("Courant pince = ");
+    Serial.print(current);
+    Serial.println(" mA");
+
+    if (current > courantSeuil) {
+      compteur++;
+      if (compteur >= mesuresConsecutives) {
+        Serial.println("Objet saisi ! Servo detache pour bloquer sans forcer.");
+        pince.detach(); // bloque mécaniquement
+        objetSaisi = true;
+        return;
+      }
+    } else {
+      compteur = 0; // reset si mesure en dessous du seuil
+    }
+    delay(10);
+  }
+  objetSaisi = false;
+}
+
+//  Fonction pour ouvrir la pince 
+void ouvrirPince() {
+  Serial.println("Ouverture de la pince");
+  pince.attach(PIN_SERVO);
+  pince.write(180); // position ouverte
+  objetSaisi = false;
+}
+```
