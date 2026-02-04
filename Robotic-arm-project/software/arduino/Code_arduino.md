@@ -198,10 +198,10 @@ void loop() {
 #include <Adafruit_INA219.h>
 #include <Servo.h>
 
-// === INA219 ===
+// INA219
 Adafruit_INA219 ina219;
 
-// === Servos ===
+//  Servos
 Servo pince;
 Servo servo1;
 Servo servo2;
@@ -210,7 +210,7 @@ int angle_servo2_haut=100;
 int angle_servo2_bas=51;
 
 
-// === Pince ===
+// Pince
 const int PIN_SERVO = 11;
 const int courantSeuil = 400;    // seuil en mA
 const int mesuresConsecutives = 5;  
@@ -357,10 +357,10 @@ void ouvrirPince() {
 #include <Adafruit_INA219.h>
 #include <Servo.h>
 
-// === INA219 ===
+// INA219 
 Adafruit_INA219 ina219;
 
-// === Servos ===
+//  Servos 
 Servo pince;
 Servo servo1;
 Servo servo2;
@@ -392,7 +392,7 @@ const int min3 = 0;
 const int max3 = 180;
 int lastCLK3 = HIGH;
 
-// === Pince ===
+// Pince 
 const int PIN_SERVO = 11;
 const int courantSeuil = 500;    // seuil en mA
 const int mesuresConsecutives = 5;  
