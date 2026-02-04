@@ -206,10 +206,13 @@ Servo pince;
 Servo servo1;
 Servo servo2;
 Servo servo3;
+int angle_servo2_haut=100;
+int angle_servo2_bas=51;
+
 
 // === Pince ===
 const int PIN_SERVO = 11;
-const int courantSeuil = 500;    // seuil en mA
+const int courantSeuil = 400;    // seuil en mA
 const int mesuresConsecutives = 5;  
 bool objetSaisi = false;
 
@@ -241,40 +244,61 @@ void loop() {
 
   // Position de départ
   servo1.write(85);
-  servo2.write(65);
-  servo3.write(60);
+    delay(500);
+
+   servo3.write(51);
+  delay(500);
+servo_bouge_lent(angle_servo2_haut,angle_servo2_bas,servo2,20);
+    delay(500);
+
+ 
   ouvrirPince();
 
-  delay(1000);
+  delay(500);
   fermerPince();
-  delay(800);
+  delay(500);
 // Le bras se lève après avoir saisi l'objet
-servo2.write(95);
-    delay(800);
+servo_bouge_lent(angle_servo2_bas,angle_servo2_haut,servo2,20);
+    delay(500);
 
 // Le bras pivote avec l'objet
   servo1.write(35);
-  delay(800);
+  delay(500);
 
 // Le bras se baisse avec l'objet
-
-servo2.write(65);
+servo_bouge_lent(angle_servo2_haut,angle_servo2_bas,servo2,20);
 delay(500);
-
 // Le bras lâche l'objet
 ouvrirPince();
-delay(800);
+delay(500);
 
 // Le bras reprend l'objet
 fermerPince();
-
+delay(500);
 // Le bras se lève après avoir saisi l'objet
-  servo2.write(95);
+servo_bouge_lent(angle_servo2_bas,angle_servo2_haut,servo2,20);
 delay(500);
  // Le bras recommence
 
  
   
+}
+
+
+
+void servo_bouge_lent(int position, int cible, Servo &servo, int delaiMs)
+{
+  if (position < cible) {
+    for (int angle = position; angle <= cible; angle++) {
+      servo.write(angle);
+      delay(delaiMs);
+    }
+  } else {
+    for (int angle = position; angle >= cible; angle--) {
+      servo.write(angle);
+      delay(delaiMs);
+    }
+  }
 }
 
 // Fonction pour fermer la pince 
@@ -319,6 +343,7 @@ void ouvrirPince() {
   pince.write(180); // ouverte
   objetSaisi = false;
 }
+
 
 ```
 
