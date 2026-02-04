@@ -115,7 +115,7 @@ void loop() {
 ```cpp
 #include <Servo.h>
 
-// === Encodeur 1 ===
+// Encodeur 1 
 #define CLK1 12
 #define DT1 8
 Servo servo1;
@@ -124,7 +124,7 @@ const int min1 = 0;
 const int max1 = 180;
 int lastCLK1 = HIGH;
 
-// === Encodeur 2 ===
+//  Encodeur 2
 #define CLK2 2
 #define DT2 7
 Servo servo2;
