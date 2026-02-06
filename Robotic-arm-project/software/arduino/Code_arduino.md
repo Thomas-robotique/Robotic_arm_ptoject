@@ -385,7 +385,7 @@ const int max2 = 180;
 int lastCLK2 = HIGH;
 
 // Encodeur 3
-#define CLK3 4
+#define CLK3 13
 #define DT3 9
 int pos3 = 90;
 const int min3 = 0;
@@ -394,9 +394,9 @@ int lastCLK3 = HIGH;
 
 // Pince 
 const int PIN_SERVO = 11;
-const int courantSeuil = 500;    // seuil en mA
+const int courantSeuil = 400;    // seuil en mA
 const int mesuresConsecutives = 5;  
-bool pinceFermee = false;       // état de la pince
+bool pinceFermee = true;       // état de la pince
 bool objetSaisi = false;
 
 void setup() {
@@ -422,7 +422,7 @@ void setup() {
   servo3.write(pos3);
 
   pince.attach(PIN_SERVO);
-  pince.write(40); // ouverte
+  pince.write(180); // ouverte
 
   // INA219
   if (!ina219.begin()) {
@@ -438,10 +438,11 @@ void loop() {
   gererEncodeur(CLK1, DT1, servo1, pos1, min1, max1, lastCLK1);
   gererEncodeur(CLK2, DT2, servo2, pos2, min2, max2, lastCLK2);
   gererEncodeur(CLK3, DT3, servo3, pos3, min3, max3, lastCLK3);
+  Serial.print(pinceFermee);
 
   // Gestion de la pince avec bouton encodeur 1 
   if (digitalRead(SW1) == LOW) {   // bouton pressé (actif LOW)
-
+    Serial.print(pinceFermee);
     if (!pinceFermee) {
       fermerPince();
       pinceFermee = true;
@@ -457,9 +458,9 @@ void gererEncodeur(int clk, int dt, Servo &servo, int &pos, int minPos, int maxP
   int currentCLK = digitalRead(clk);
   if (currentCLK != lastCLK && currentCLK == LOW) {
     if (digitalRead(dt) != currentCLK) {
-      pos += 5;
+      pos += 2;
     } else {
-      pos -= 5;
+      pos -= 2;
     }
     if (pos < minPos) pos = minPos;
     if (pos > maxPos) pos = maxPos;
@@ -496,8 +497,9 @@ void fermerPince() {
       compteur = 0; // reset si mesure en dessous du seuil
     }
     delay(10);
+    objetSaisi = false;
+
   }
-  objetSaisi = false;
 }
 
 //  Fonction pour ouvrir la pince 
@@ -505,6 +507,7 @@ void ouvrirPince() {
   Serial.println("Ouverture de la pince");
   pince.attach(PIN_SERVO);
   pince.write(180); // position ouverte
+  delay(1000);
   objetSaisi = false;
 }
 ```
