@@ -357,74 +357,39 @@ void ouvrirPince() {
 #include <Adafruit_INA219.h>
 #include <Servo.h>
 
-// INA219 
+// INA219
 Adafruit_INA219 ina219;
 
-//  Servos 
+//  Servos
 Servo pince;
 Servo servo1;
 Servo servo2;
 Servo servo3;
+int angle_servo2_haut=100;
+int angle_servo2_bas=51;
+int delai=500;
+int delai2=1000;
 
-
-// Encodeur 1
-#define CLK1 12
-#define DT1 8
-#define SW1 10   // bouton poussoir de l’encodeur 1
-int pos1 = 90;
-const int min1 = 0;
-const int max1 = 180;
-int lastCLK1 = HIGH;
-
-// Encodeur 2
-#define CLK2 2
-#define DT2 7
-int pos2 = 90;
-const int min2 = 0;
-const int max2 = 180;
-int lastCLK2 = HIGH;
-
-// Encodeur 3
-#define CLK3 13
-#define DT3 9
-int pos3 = 90;
-const int min3 = 0;
-const int max3 = 180;
-int lastCLK3 = HIGH;
-
-// Pince 
+// Pince
 const int PIN_SERVO = 11;
 const int courantSeuil = 400;    // seuil en mA
 const int mesuresConsecutives = 5;  
-bool pinceFermee = true;       // état de la pince
 bool objetSaisi = false;
 
 void setup() {
   Serial.begin(9600);
 
-  // Encodeurs
-  pinMode(CLK1, INPUT_PULLUP);
-  pinMode(DT1, INPUT_PULLUP);
-  pinMode(SW1, INPUT_PULLUP);   // bouton encodeur 1
-
-  pinMode(CLK2, INPUT_PULLUP);
-  pinMode(DT2, INPUT_PULLUP);
-
-  pinMode(CLK3, INPUT_PULLUP);
-  pinMode(DT3, INPUT_PULLUP);
-
   // Attacher servos
-  servo1.attach(5);
-  servo2.attach(6);
-  servo3.attach(3);
-  servo1.write(pos1);
-  servo2.write(pos2);
-  servo3.write(pos3);
+  servo2.attach(5);
+  servo3.attach(6);
+  servo1.attach(3);
 
   pince.attach(PIN_SERVO);
-  pince.write(180); // ouverte
+  pince.write(180); // ouverte au départ
 
-  // INA219
+
+  // INA219                                     // Vérifie la connexion correcte de l’INA219 ; facilite le diagnostic en cas d’erreur.
+       
   if (!ina219.begin()) {
     Serial.println("INA219 non detecte !");
     while (1);
@@ -434,80 +399,115 @@ void setup() {
 }
 
 void loop() {
-  // Contrôle des 3 encodeurs pour les servos 
-  gererEncodeur(CLK1, DT1, servo1, pos1, min1, max1, lastCLK1);
-  gererEncodeur(CLK2, DT2, servo2, pos2, min2, max2, lastCLK2);
-  gererEncodeur(CLK3, DT3, servo3, pos3, min3, max3, lastCLK3);
-  Serial.print(pinceFermee);
 
-  // Gestion de la pince avec bouton encodeur 1 
-  if (digitalRead(SW1) == LOW) {   // bouton pressé (actif LOW)
-    Serial.print(pinceFermee);
-    if (!pinceFermee) {
-      fermerPince();
-      pinceFermee = true;
-    } else {
-      ouvrirPince();
-      pinceFermee = false;
+  //  Séquence de démonstration 
+
+  // Position de départ
+  servo1.write(85);
+  servo3.write(51);
+  delay(delai);
+
+  servo_bouge_lent(angle_servo2_haut,angle_servo2_bas,servo2,20);
+  delay(delai);
+
+  ouvrirPince();
+  delay(delai2);
+
+  fermerPince();
+  delay(delai);
+
+ // Le bras se lève après avoir saisi l'objet
+  servo_bouge_lent(angle_servo2_bas,angle_servo2_haut,servo2,20);
+  delay(delai);
+
+  servo3.write(80);
+  delay(delai); 
+
+// Le bras pivote avec l'objet
+  servo1.write(35);
+  delay(delai);
+
+  servo3.write(51);
+  delay(delai);
+
+// Le bras se baisse avec l'objet
+  servo_bouge_lent(angle_servo2_haut,angle_servo2_bas,servo2,20);
+  delay(delai);
+// Le bras lâche l'objet
+  ouvrirPince();
+  delay(delai2);
+
+// Le bras reprend l'objet
+  fermerPince();
+  delay(delai);
+// Le bras se lève après avoir saisi l'objet
+  servo_bouge_lent(angle_servo2_bas,angle_servo2_haut,servo2,20);
+  delay(delai);
+ // Le bras recommence
+
+ 
+  
+}
+
+
+
+void servo_bouge_lent(int position, int cible, Servo &servo, int delaiMs)
+{
+  if (position < cible) {
+    for (int angle = position; angle <= cible; angle++) {
+      servo.write(angle);
+      delay(delaiMs);
+    }
+  } else {
+    for (int angle = position; angle >= cible; angle--) {
+      servo.write(angle);
+      delay(delaiMs);
     }
   }
 }
 
-// Fonction générique pour gérer un encodeur 
-void gererEncodeur(int clk, int dt, Servo &servo, int &pos, int minPos, int maxPos, int &lastCLK) {
-  int currentCLK = digitalRead(clk);
-  if (currentCLK != lastCLK && currentCLK == LOW) {
-    if (digitalRead(dt) != currentCLK) {
-      pos += 2;
-    } else {
-      pos -= 2;
-    }
-    if (pos < minPos) pos = minPos;
-    if (pos > maxPos) pos = maxPos;
-    servo.write(pos);
-    Serial.print("Servo = "); Serial.println(pos);
-  }
-  lastCLK = currentCLK;
-}
-
-//  Fonction pour fermer la pince 
+// Fonction pour fermer la pince 
 void fermerPince() {
   Serial.println("Fermeture de la pince...");
-
   pince.attach(PIN_SERVO);
-  pince.write(40);
+  pince.write(40); // fermée
 
-  int compteur = 0;
 
-  for (int t = 0; t < 100; t++) {  // environ 1 seconde de surveillance
+  int compteur = 0;           // Le compteur sert à compter le nombre de fois que l'intensité du courant est au dessus du seuil                                   
+                                // afin d’éviter que la pince interprète une variation de courant anodine comme un objet saisi.
+
+
+  for (int t = 0; t < 50; t++) {  // surveillance rapide
     float current = ina219.getCurrent_mA();
     Serial.print("Courant pince = ");
     Serial.print(current);
     Serial.println(" mA");
 
     if (current > courantSeuil) {
-      compteur++;
-      if (compteur >= mesuresConsecutives) {
-        Serial.println("Objet saisi ! Servo detache pour bloquer sans forcer.");
+      compteur++;                                // À chaque fois que le seuil est dépassé, le compteur est incrémenté de 1.
+                
+      if (compteur >= mesuresConsecutives)     // Si le compteur dépasse le seuil défini, cela signifie qu’un objet a été détecté par la pince.
+{
+        Serial.println("Objet saisi ! Servo détaché pour bloquer sans forcer.");
         pince.detach(); // bloque mécaniquement
         objetSaisi = true;
         return;
       }
     } else {
-      compteur = 0; // reset si mesure en dessous du seuil
+      compteur = 0;
     }
-    delay(10);
-    objetSaisi = false;
-
+    delay(5);
   }
-}
-
-//  Fonction pour ouvrir la pince 
-void ouvrirPince() {
-  Serial.println("Ouverture de la pince");
-  pince.attach(PIN_SERVO);
-  pince.write(180); // position ouverte
-  delay(1000);
   objetSaisi = false;
 }
+
+//  Fonction pour ouvrir la pince
+void ouvrirPince() {
+  Serial.println("Ouverture de la pince...");
+  pince.attach(PIN_SERVO);
+  pince.write(180); // ouverte
+  objetSaisi = false;
+}
+
+
 ```
