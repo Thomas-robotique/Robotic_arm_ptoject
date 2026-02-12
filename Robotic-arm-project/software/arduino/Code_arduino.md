@@ -483,6 +483,7 @@ void fermerPince() {
   pince.write(40);
 
   int compteur = 0;
+test
 
   for (int t = 0; t < 100; t++) {  // environ 1 seconde de surveillance
     float current = ina219.getCurrent_mA();
